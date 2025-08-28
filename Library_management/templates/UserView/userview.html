@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Text -->
+     <section class="row text-white">
+      <div class="offset-xl-5 offset-1 col-10 col-xl-5  py-lg-5 my-lg-5 my-3"  >
+        <h1 >Sharjah <span class="color">Libraries</span></h1>
+        <p class="py-lg-3">The library is a haven of knowledge, offering a quiet space for reading, research, <br> and learning.it houses a  vast collection of books, journel and digital resources for all ages and interest </p>
+        <form role="Search" method="GET" action="{% url 'Books' %}">
+           {% csrf_token %}
+          <input class="border border-0 rounded-start p-lg-2 p-1 text-black" type="text" class="header-input"   name="query" value="{{query}}" placeholder="  Books,Articles">
+          <button class=" p-lg-2 p-1 border border-0 bgColor my-lg-0 my-2 rounded-end" type="submit" >Search <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <button class=" d-block rounded btn bg-white mt-2 mb-5">Learn More About Us</button>
+      </div>
+     </section>
+    </div>
+   
+
+    <div class="container text-white">
+      <div class="my-lg-5 my-2">
+        <h3 class="image d-inline p-end ps-3 py-4">News Updates</h3>
+        <p class="textColor">The Sharjah Public Library was established in 1989 as part of Sharjah's cultural development efforts. It began as a small community library</p>
+      </div>
+    </div>
+<!-- Cards -->
+ 
+ <div class="container text-white">
+  <h4 class="h4 my-4">The Most <span class="color"> Latest Books</span></h4>
+  <div class="row">
+ {% for values in dataget %}
+    <div class="col-lg-3 p-sm-3  col-sm-6 col-12">
+      <a href="{% url 'bookdetail' values.id %}" class="text-decoration-none text-white ">
+        <div class="rounded bgCard mt-3 text-center">
+          <img src={{ values.cover_image.url }} class="img-fluid p-2 "  alt="book1">
+          {% comment %} <img src="{% static '/Userview/book1.png' %}" class="img-fluid" alt="book1"> {% endcomment %}
+          <p class="m-0 text fs-5">{{values.Booktitle}}</p>
+          <p class="fs-6 "><i class="fa-solid fa-star"></i> {{values.BookRating}}</p>
+          <span class="textColor d-block">Author</span>
+          <div class="pb-3">
+            <p class="fs-6 d-inline pe-sm-5 text-white">{{values.BookAuthor}}</p>
+            <button class="rounded-circle bgColor border border-0 ms-sm-5">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+   
+
+  </div>
+</div> 
+
+<!-- History of Sharjah Library -->
+
+ <div class="container bgCard p-3 mt-lg-5 mt-3 ">
+  <div class="row ">
+    <div class="col-md-6 col-12">
+      <h3 class=" m-2 h3 text-white">History of <span class="color">Sharjah Library</span></h3>
+      <p class="textColor pt-3">The Sharjah Public Library was established in 1989 as part of Sharjah's cultural development efforts. It began as a small community library and has since grown into a significant cultural and knowledge center. The library is part of the Sharjah Libraries Network, which includes several specialized libraries across the emirate. It offers a wide range of services, including digital resources, events, and programs for all age groups. The library reflects Sharjah's commitment to fostering education, innovation, and cultural exchange.</p>
+      <p class="textColor mt-lg-5 text-end">204/300</p>
+      <div class="bgColor bar rounded mb-2" style="height: 10px; width:100%">
+
+      </div>
+    </div>
+    <div class="col-md-6 col-12 text-center pt-sm-3">
+      <img  class="img-fluid" src="{% static '/Userview/image.png' %} " alt="habibi">
+    </div>
+  </div>
+
+ </div>
+
+ <!-- Categories -->
+<div class="container">
+  <div class="row mt-5 ">
+    <div class="col-sm-12 mb-sm-5 text-center  col-lg-3 ">
+      <span><img src="{% static '/Userview/Frame 506.png' %}" alt="logo" class="img-fluid"></span>
+      <p>Categories</p>
+      <p class="textColor px-4 ">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, dicta excepturi quod molestiae velit adipisci accusamus
+      </p>
+
+      <p class="fs-6  d-inline pe-sm-1">More Info </p>
+<button class="rounded-circle bgColor  border border-0 ms-sm-2 ms-lg-1"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="col-sm-12  mb-sm-5 text-center col-lg-3 offset-lg-1 ">
+      <span class="fs-2"><img src="{% static '/Userview/Frame 505.png' %} " alt="logo" class="img-fluid">
+  </span>
+      <p>Register Now</p>
+      <p class="textColor px-4">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, dicta excepturi quod molestiae velit adipisci accusamus
+      </p>
+
+      <p class="fs-6  d-inline pe-sm-1">More Info </p>
+<button class="rounded-circle bgColor  border border-0 ms-sm-2 ms-lg-1"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="col-sm-12 mb-sm-5  text-center col-lg-3 offset-lg-1">
+      <span><img src="{% static '/Userview/Frame 504.png' %}" alt="logo" class="img-fluid"></span>
+      <p>Book Club Now</p>
+      <p class="textColor px-4">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, dicta excepturi quod molestiae velit adipisci accusamus
+      </p>
+
+      <p class="fs-6  d-inline pe-sm-1">More Info </p>
+<button class="rounded-circle bgColor  border border-0 ms-sm-2 ms-lg-1"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+<!-- News -->
+{% comment %} <div class="container m-5">
+<div class="row ">
+  <div class="col-12">
+    <h3 class="d-inline">Latest <span class="color">News </span></h3>
+    <h3 class="ps-4 d-inline">Upcoming Events</h3>
+    <div class="bgColor mt-2" style="height: 2px; width:12%"></div>
+  </div>
+    <div class="col-lg-4 pt-4 text-lg-right text-center col-12  ">
+      <div class="rounded cardColor px-3 ">
+<img src="{% static '/Userview/unsplash_JjDWeBOzT3U.png' %} " class="mt-2 img-fluid" alt="book1">
+<p class=" mt-2 fs-5">SPL honours winners of 24th Sharjah Libraries' Literature Award </p>
+
+<span class="textColor d-block mt-2">October 02, 2024</span>
+<div class="pb-3">
+  <p class="fs-6 d-inline ">Read More</p>
+  <button class="rounded-circle bgColor  border border-0 ms-sm-1 mt-2"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+</div>
+    </div>
+    <div class="col-lg-4 pt-4 text-lg-right text-center col-12  ">
+      <div class="rounded cardColor">
+<img src="{% static '/Userview/bh.png' %}" class="img-fluid"  alt="book1">
+<p class="fs-5 pt-0 px-2"> ELIA, "Juma Al Majid" host  and workshop on partnerships</p>
+
+<span class="textColor d-block px-2">October 02, 2024</span>
+<div class="pb-3">
+  <p class="fs-6 d-inline px-2">Read More</p>
+  <button class="rounded-circle bgColor  border border-0 ms-sm-1 mt-2"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+</div>
+    </div>
+    <div class="col-lg-4 pt-4 text-lg-right text-center col-12  ">
+      <div class="rounded cardColor px-3 ">
+<img src="{% static '/Userview/1_78cd037064744bab8124c9896476a1 1.png' %}" class="mt-2 img-fluid" alt="book1">
+<p class=" mt-2 fs-5">Sharjah Libraries to launch SPLLF on Sept 30, Oct 1 </p>
+
+<span class="textColor d-block mt-2">October 02, 2024</span>
+<div class="pb-3">
+  <p class="fs-6 d-inline ">Read More</p>
+  <button class="rounded-circle bgColor  border border-0 ms-sm-1 mt-2"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+</div>
+    </div>
+    
+  
+</div>
+</div> {% endcomment %}
+
+<!-- Posts -->
+ <div class="container my-5">
+  <div class="row px-lg-5">
+    <div class="col-lg-6 ">
+      <p class="fs-2">See Our <span class="color">Latest Posts</span></p>
+      <p class="textColor">Check out our latest posts for exciting updates and insights! Stay connected and explore fresh content across a variety of topics. Don't miss out—follow us for more!</p>
+      <div class="div">
+        <span><i class="fa-brands fa-instagram white pe-1"></i></span>
+        <p class="d-inline text-lg-right text-center">Follow Sharjah Library</p>
+        <button class="rounded-circle bgColor  border border-0 ms-sm-1"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="col-lg-2 mt-2 text-center">
+      <img class="img-fluid" alt="nature" src="{% static '/Userview/Rectangle 44.png' %}">
+    </div>
+    <div class="col-lg-2 mt-lg-5 mt-2 text-center">
+      <img class="img-fluid" alt="nature" src="{% static '/Userview/Rectangle 45.png' %}">
+    </div>
+    <div class="col-lg-2 mt-2 text-center">
+      <img class="img-fluid" alt="nature" src="{% static '/Userview/Rectangle 44.png' %}">
+    </div>
+  </div>
+ </div>
+
+ <!-- Tweets -->
+
+   
+  <div class="container mt-5">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-6 col-12 text-right">
+        <span class="fs-3 px-md-2 px-5">Our Latest <span class="color">Tweets</span></span>
+      </div>
+  
+      <div class="col-md-6 col-12 text-md-end text-right px-md-2 px-5 ">
+        <span><i class="fa-brands fa-twitter white me-2"></i></span>
+        <p class="d-inline ">Follow Sharjah Library</p>
+        <button class="rounded-circle bgColor border border-0 ms-2">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row   ">
+      <div class="col p-md-5">
+<span><img src="{% static '/Userview/Ellipse 302.png' %}"></span>
+<span>UAIelements</span>
+<span><i class="fa-brands fa-twitter  ms-3"></i></span>
+<div>
+  <p class=" mt-3 textColor">Choose a book that will help you build positive thoughts and will lead you towards success in your life.</p>
+  <p style="color:blue">#Sharjah_Public_Libraries #library</p>
+  <span class="textColor">02:05AM - Tue Jan 2022</span>
+  <p class="textColor">2 Retweet  1 Like </p>
+</div>
+      </div>
+      <div class="col p-md-5">
+<span><img src="{% static '/Userview/Ellipse 302.png' %}"></span>
+<span>UAIelements</span>
+<span><i class="fa-brands fa-twitter  ms-3"></i></span>
+<div>
+  <p class=" mt-3 textColor">Choose a book that will help you build positive thoughts and will lead you towards success in your life.</p>
+  <p style="color:blue">#Sharjah_Public_Libraries #library</p>
+  <span class="textColor">02:05AM - Tue Jan 2022</span>
+  <p class="textColor">2 Retweet  1 Like </p>
+</div>
+      </div>
+      <div class="col p-md-5">
+<span><img src="{% static '/Userview/Ellipse 302.png' %}"></span>
+<span>UAIelements</span>
+<span><i class="fa-brands fa-twitter  ms-3"></i></span>
+<div>
+  <p class=" mt-3 textColor">Choose a book that will help you build positive thoughts and will lead you towards success in your life.</p>
+  <p style="color:blue">#Sharjah_Public_Libraries #library</p>
+  <span class="textColor">02:05AM - Tue Jan 2022</span>
+  <p class="textColor">2 Retweet  1 Like </p>
+</div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+  {% endblock  %}

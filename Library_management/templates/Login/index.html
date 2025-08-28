@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="container-fluid outer_container d-flex flex-column align-items-center justify-content-center p-4" style="border-radius: 10px; max-width: 400px;">
+    
+    <!-- Header -->
+    <div class="text-center">
+      <p class="fs-2 fw-bold mb-3 text-white">Login</p>
+    </div>
+    
+    <!-- Simplified Form -->
+    {% comment %} <form method="POST" action="{% url 'login' %}" class="w-100 px-4" autocomplete="off">
+      {% csrf_token %}
+      
+      <div class="px-4">
+            <label for="user_login" class="d-block text-start ms-2 text-white">Name</label>
+            <input type="text" name="user_login" placeholder="" autocomplete="off" required class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color" style="border-radius: 12px;">
+
+            <label for="user_pass" class="d-block  text-start ms-2 text-white">Password</label>
+            <input type="password" name="user_pass" autocomplete="off" required placeholder="" class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent !important borderColor text-color" style="border-radius: 12px; background-color: transparent">
+
+        {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+        
+      </div>
+    
+          <div class="mx-4 mt-3 d-flex justify-content-center align-items-center">
+  <button type="submit" class="fw-medium border border-0 text-dark px-4 py-2" style="background-color: #FFB800; border-radius: 30px;">
+    Submit
+  </button>
+</div>
+
+    </form> {% endcomment %}
+    <form method="POST" action="{% url 'login' %}" class="w-100 px-4" autocomplete="off">
+  {% csrf_token %}
+
+  <!-- Autofill blocker (trick browser) -->
+  <input type="text" name="hidden_user" style="display: none;" autocomplete="off">
+  <input type="password" name="hidden_pass" style="display: none;" autocomplete="new-password">
+
+  <div class="px-4">
+    <label for="user_login" class="d-block text-start ms-2 text-white">Name</label>
+    <input type="text" name="user_login" id="user_login" placeholder="" autocomplete="new-username"
+           required class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color" style="border-radius: 12px;">
+
+    <label for="user_pass" class="d-block text-start ms-2 text-white">Password</label>
+    <input type="password" name="user_pass" id="user_pass" autocomplete="new-password"
+           required placeholder="" class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color" style="border-radius: 12px;">
+  </div>
+
+  <div class="mx-4 mt-3 d-flex justify-content-center align-items-center">
+    <button type="submit" class="fw-medium border border-0 text-dark px-4 py-2"
+            style="background-color: #FFB800; border-radius: 30px;">
+      Submit
+    </button>
+  </div>
+
+
+   {% if messages %}
+  {% for message in messages %}
+    <div class="mt-2 alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+</form>
+
+    <!-- Footer -->
+    <footer class="mt-4 text-center text-white">
+      <p>Not have an account? <a href="{% url 'signin' %}">Sign in here</a></p>
+    </footer>
+    
+  </div>
+</div>
+
+
+ {% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <div class="container text-light">
+    <h2 class="my-sm-4 my-2">Book Details</h2>
+
+    <div class="row mb-sm-4">
+      <div class="col-md-4">
+        <img src="{{ book.cover_image.url }}" class="img-fluid" alt="Book Cover">
+      </div>
+      <div class="col-md-8">
+        <h2>{{book.Booktitle}}</h3>
+        <p><strong>Author:</strong> {{book.BookAuthor}}</p>
+        <p><strong>Rating:</strong> {{book.BookRating}}</p>
+        <p><strong>Published:</strong> 2022</p>
+        <p><strong>Price:</strong>  {{book.Bookprice}}</p>
+        <p><strong>Summary:</strong> This is a dummy summary of the book. It talks about an adventurous journey beyond the unknown lands filled with mysteries and excitement.</p>
+        <a href="{% url 'Main'%}" class="btn btn-secondary mt-3">Back to Library</a>
+      
+
+        <a href="{% url 'add_to_cart' book.id %}" class="btn btn-secondary mt-3">Add to Cart</a>
+     
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

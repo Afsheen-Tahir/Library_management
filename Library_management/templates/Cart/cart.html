@@ -1,0 +1,103 @@
+ {% extends "base.html" %}
+
+{% comment %}
+{% block content %}
+    <!-- Cart Page Section -->
+    <div class="container my-5">
+        <h2 class="text-center text-white mb-4 ">Your Cart</h2>
+
+        <!-- Cart Items -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="book1.png" class="img-fluid rounded-start" alt="book1">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{carts.Booktitle}}</h5>
+                                <p class="card-text">{{carts.BookAuthor}}</p>
+                                <p class="card-text"><small class="text-muted">Price: $10.99</small></p>
+                                <button class="btn btn-danger">Remove from Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              
+               
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cart Summary</h5>
+                        <hr>
+                        <p>Total Items: 2</p>
+                        <p>Total Price: $23.48</p>
+                        <button class="btn btn-success w-100">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %} {% endcomment %}
+
+
+  
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center text-white mb-4">Your Cart</h2>
+
+    <!-- Cart Items -->
+    <div class="row">
+        <div class="col-md-6">
+            {% if items %}
+                {% for item in items %}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ item.book.cover_image.url }}" class="img-fluid rounded-start" alt="book">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                <h4>{{ item.book.title }}</h4>
+        <p>Author: {{ item.book.author }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Price: Rs. {{ item.book.Bookprice }}</p>
+        <p>Total: Rs. {{ item.total_price }}</p>
+        <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-secondary mt-3">Remove</a>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <h4 class="text-white">Your cart is empty.</h4>
+                
+            {% endif %}
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cart Summary</h5>
+                    <hr>
+                    <p>Total Items: {{ items|length }}</p>
+                    <p><strong>Total Amount: Rs. {{ total }}</strong></p>
+                    <p><strong>{{ message }}</strong></p>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

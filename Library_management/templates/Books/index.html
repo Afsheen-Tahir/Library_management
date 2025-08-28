@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container-fluid p-sm-4 primary p-2">
+    <h1 class="h1 my-4 text-center text-white">All Collection of<span class="color"> Books</span></h4>
+      <form method='GET' class="d-flex align-items-center flex-row my-3 p-2" >
+         {% csrf_token %}
+      <div class="d-block text-left my-3 p-2">
+ 
+  <select id="book-filter" name="books" onchange="this.form.submit()"   class="form-select form-select-lg bg-dark text-white w-auto mx-auto" >
+    {% comment %} <option value="">{{filter}}</option> {% endcomment %}
+    
+    <option value="New to Old">New to Old</option>
+    <option value="Old to New">Old to new</option>
+    <option value="Rating">Rating</option>
+  </select>
+<noscript><button type="submit" class="btn btn-primary">Apply</button></noscript>
+</div>
+  
+</form>
+
+
+<div class="row row-cols-md-4 row-cols-2">
+      
+ {% if data %}
+
+ {% for values in data %}
+
+   <div class="col mb-2">
+  <a href="{% url 'bookdetail' values.id %}" class="text-decoration-none text-white">
+    <div class="rounded bgCard mt-3 text-center book-card">
+      <div class="book-image-wrapper">
+        <img src="{{ values.cover_image.url }}" class="img-fluid p-2 book-image" alt="book1">
+      </div>
+
+      <p class="m-0 text fs-5">{{values.Booktitle}}{{values.pk}}</p>
+      <p class="fs-6"><i class="fa-solid fa-star"></i> {{values.BookRating}}</p>
+      <span class="textColor d-block">Author</span>
+      <span class="textColor d-block">Price : {{values.Bookprice}}</span>
+      <div class="pb-2">
+        <p class="fs-6 d-inline pe-sm-5 text-white">{{values.BookAuthor}}</p>
+        <button class="rounded-circle bgColor border border-0 ms-sm-5">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </a>
+</div>
+
+    {% endfor %}
+   {%elif message %}
+   <h1 class="text-center text-white">{{message}}</h1>
+  {% endif %} 
+ </div>
+</div>
+
+   {% endblock %}

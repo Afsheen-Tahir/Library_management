@@ -1,0 +1,79 @@
+body{
+    /* color: rgb(255, 255, 255); */
+    background-color:#171717
+ 
+}
+.active{
+    background-color: aquamarine;
+}
+.cardColor{
+    background-color:#222222
+}
+
+.bgCard{
+background-color: rgb(52, 52, 52);
+}
+#padding{
+    padding-left: 27%;
+}
+.nav-item a{
+    color:white
+}
+.btn:hover{
+    color: black;
+
+}
+.fa-brands{
+    color: gray;
+    font-size: larger;
+}
+.color{
+    color: rgba(164, 102, 64, 1);
+}
+.bgColor{
+    background-color: rgba(164, 102, 64, 1);
+}
+.image{
+    background-image: url('/Rectangle 50.png');
+    
+}
+.p-end{
+    padding-right: 44px;
+    z-index: 999;
+}
+.textColor{
+    color: rgb(240, 238, 238)
+}
+.fa-star{
+    color: goldenrod;
+}
+.fa-arrow-right{
+    color: white;
+}
+.bar{
+    background: linear-gradient(to right, rgba(164, 102, 64, 1) 60%, gray 40%);
+}
+.white{
+color: rgb(246, 246, 244);
+}
+.book-card {
+  height: 400px; /* Fixed height for all cards */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.book-image-wrapper {
+  height: 230px; /* Fixed image container height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-image {
+  max-height: 100%;
+  object-fit: contain; /* or 'cover' if you want cropped look */
+}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid outer_container flex-wrap d-flex justify-content-center color" style="border-radius: 10px;">
+      <div class="text-white text-center pt-sm-4 pt-1">
+        <p class="fs-2 fw-bold">Register Here</p>
+        <p class="text-color">All Information provided will be verified</p>
+
+        <div class="d-flex justify-content-between flex-wrap mt-3 px-3">
+          <span class="fs-5">Personelle</span>
+        </div>
+<form method="POST" autocomplete="off">
+  {% csrf_token %}
+
+  <!-- Dummy fields to block browser autofill -->
+  <input type="text" name="fake_user" style="display:none;">
+  <input type="password" name="fake_pass" style="display:none;">
+
+  <div class="px-4">
+    <label for="name" class="d-block text-start ms-2">Name</label>
+    <input type="text" name="name" placeholder="" autocomplete="off"
+           class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color"
+           style="border-radius: 12px;">
+
+    <label for="email" class="d-block text-start ms-2">Email</label>
+    <input type="email" name="email" placeholder="" autocomplete="new-email"
+           class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color"
+           style="border-radius: 12px; background-color: transparent">
+
+    <label for="password" class="d-block text-start ms-2">Password</label>
+    <input type="password" name="password" placeholder="" autocomplete="new-password"
+           class="w-100 p-1 m-1 p-sm-2 m-sm-2 bg-transparent borderColor text-color"
+           style="border-radius: 12px; background-color: transparent">
+  </div>
+
+  <div class="mx-4 mt-3 d-flex ms-5 justify-content-between align-items-center p-1"
+       style="background-color: #FFB800; border-radius: 30px; width: 85%;">
+    <div class="position-absolute start-50 translate-middle-x">
+      <button type="submit" class="fw-medium border border-0 text-dark m-0"
+              style="background-color: #FFB800;">Submit</button>
+    </div>
+    <button class="border border-0 bg-white rounded-circle p-2 ms-auto">
+      <i class="fs-4 fa-solid color fa-arrow-right"></i>
+    </button>
+  </div>
+</form>
+
+            {% if messages %}
+  {% for message in messages %}
+    <div class="mt-2 alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+  <footer class="mt-4 text-center">
+      <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+    </footer>
+       
+      </div>
+    </div>
+  </div>
+{% endblock %}

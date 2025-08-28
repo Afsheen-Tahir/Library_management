@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharja Library</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    {% comment %} <link rel="stylesheet" href="/static/style.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" > 
+ <style>
+  .activate{
+    background-color:rgba(164, 102, 64, 1);
+    color:black  !important;
+    border-radius:10px;
+  }
+  .nav-link:hover {
+    color: rgba(164, 102, 64, 1); !important; /* Prevent color change on hover */
+  }
+ </style>
+ <style>
+  input,
+input:focus {
+  color: white ; /* Normal and focused text white */
+}
+.header-input,
+.header-input:focus {
+  color: black !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset !important;
+  -webkit-text-fill-color: white !important; /* or your desired text color */
+  background-color: transparent !important;
+  color:white
+  border: 1px solid #ccc !important; /* optional, apni border ko maintain karnay ke liye */
+  transition: background-color 5000s ease-in-out 0s; /* autofill background hide karne ke liye trick */
+}
+
+
+</style>
+
+</head>
+<body>
+    
+<div class="container-fluid" id="main_Div" style="background-image: url('{% static 'Userview/Rectangle 28.png' %}'); background-color: rgba(28, 22, 22, 0.69);">
+
+      <!-- Navbar -->
+    <div class="container navbar navbar-expand-lg">
+      <div  class="navbar-brand">
+<img src="{% static '/Userview/Frame 400 (1).png' %} " alt="logo" width="150px" class="img-fluid">
+      </div>
+     
+      <div class="mt-2 collapse navbar-collapse " id="navbarSupportedContent" >
+<div class="container " id="padding">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around px-lg-3 ">
+    <li class="nav-item">
+      <a class="{% if request.path == '/' %}activate {% endif%} nav-link" aria-current="page" href="{% url 'Main' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="{% url 'Books' %}">Book</a>
+    </li>
+    <li class="nav-item">
+      <a class="{% if request.path == '/cart' %}activate {% endif%} nav-link" href="{% url 'cart'%}">Cart</a>
+    </li>
+   
+   {% if user.is_authenticated %}
+          <p class="btn mx-lg-2 bg-white px-lg-4">{{user.username}}</p>
+        
+        <a href="{% url 'logout' %}"><button class="btn mx-lg-2 bg-white px-lg-4">Logout</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button class="btn mx-lg-2 bg-white px-lg-4">Login</button></a>
+        <a href="{% url 'signin' %}">
+          <button class="btn mx-lg-2 bg-white px-lg-4">Sign In</button>
+        </a>
+        {% endif %}
+      
+            </div>
+
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-twitter"></i>
+<i class="fa-brands fa-google"></i>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  
