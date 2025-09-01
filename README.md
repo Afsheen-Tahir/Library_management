@@ -17,6 +17,15 @@ Add books to a personal cart
 View cart summary with total books and prices
 
 Remove books from cart anytime
+📸 Screenshots
+
+🔹 Homepage
+![Project Screenshot](images/Home.png)
+🔹 Book
+![Project Screenshot](images/Books.png)
+🔹 Cart Page
+![Project Screenshot](images/Detail.png)
+
 
 🛠️ Tech Stack
 
